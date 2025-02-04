@@ -12,19 +12,7 @@ A text summarization application that uses PageRank algorithm and Universal Sent
 
 ## Requirements
 
-- Python 3.6+
-- Dependencies listed in requirements.txt:
-  - gradio
-  - numpy
-  - pandas
-  - nltk
-  - networkx
-  - tensorflow_hub
-  - textblob
-  - kagglehub
-  - matplotlib
-  - seaborn
-  - transformers
+- Python 3.10
 
 ## Installation
 

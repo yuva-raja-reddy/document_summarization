@@ -9,6 +9,7 @@ from nltk.tokenize import sent_tokenize
 
 # Download NLTK dependencies
 nltk.download('punkt_tab')
+nltk.download('punkt')
 
 # Load Universal Sentence Encoder
 embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
@@ -68,21 +69,21 @@ def set_random_text():
 def clear_fields():
     return "", ""
 
-demo = gr.Blocks()
-with demo:
-    with gr.Row():
-        user_input = gr.Textbox(lines=10, placeholder="Enter text to summarize or click Generate Random Text")
-    
-    num_sentences = gr.Slider(1, 10, step=1, label="Number of sentences")
-    output = gr.Textbox(label="Output")
-    
-    with gr.Row():
-        generate_btn = gr.Button("Generate Random Text")
-        submit_btn = gr.Button("Summarize")
-        clear_btn = gr.Button("Clear")
-    
-    generate_btn.click(set_random_text, inputs=[], outputs=[user_input])
-    submit_btn.click(process_input, inputs=[user_input, num_sentences], outputs=[output])
-    clear_btn.click(clear_fields, inputs=[], outputs=[user_input, output])
+demo = gr.Interface(
+    fn=process_input,
+    inputs=[
+        gr.Textbox(lines=10, placeholder="Enter text to summarize or click Generate Random Text", label="Input Text"),
+        gr.Slider(minimum=1, maximum=10, value=3, step=1, label="Number of sentences")
+    ],
+    outputs=gr.Textbox(label="Summary"),
+    title="Document Summarization using PageRank",
+    description="Enter text or generate random text to create a summary.",
+    examples=[
+        [random_texts[0], 3],
+        [random_texts[1], 3]
+    ],
+    allow_flagging="never"
+)
 
-demo.launch()
+if __name__ == "__main__":
+    demo.launch()
