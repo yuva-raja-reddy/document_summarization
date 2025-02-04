@@ -30,7 +30,7 @@ A text summarization application that uses PageRank algorithm and Universal Sent
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/yuva-raja-reddy/document_summarization.git
 cd document_summarization
 ```
 
