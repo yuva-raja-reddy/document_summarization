@@ -1,0 +1,11 @@
+gradio
+numpy
+pandas
+nltk
+networkx
+tensorflow_hub
+textblob
+kagglehub
+matplotlib
+seaborn
+transformers
